@@ -1,0 +1,59 @@
+balance = 1000
+username = 'admin'
+password = '1234'
+tries = 0
+while True:
+    if tries > 2:
+        print('Sorry, You Ran Out Of Attempts. Locked Out!')
+        break
+    userUsernameInput = input('Welcome To PythonBank! Please, Log In. Whats Your Username?').strip()
+    userPasswordInput = input(f"{userUsernameInput}, Please Enter Your Password.").strip()
+    if userUsernameInput == username and userPasswordInput == password:
+        print('Successfully Logged In!')
+        break
+    else:
+        print('Sorry, You May Have Entered Something Wrong. Please, Try Again.')
+        tries = tries + 1
+def showMenu():
+    choice = input(f"Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose.").strip().lower()
+    return choice
+while True:
+    choice = showMenu()
+    if choice == 'check balance':
+        print(balance)
+    elif choice == 'deposit money':
+        try:
+            amountDeposited = int(input('How Much Money Would You Like To Deposit?'))
+            balance = balance + amountDeposited
+        except ValueError:
+            print('Sorry, You May Have Entered Something Wrong. Please, Try Again. ValueError')
+    elif choice == 'withdraw money':
+        try:
+            amountWithdrawed = int(input('How Much Money Would You Like To Withdraw?'))
+            balance = balance - amountWithdrawed
+        except ValueError:
+            print('Sorry, You May Have Entered Something Wrong. Please, Try Again. ValueError')
+    elif choice == 'exit':
+        print('Goodbye!')
+        break
+
+Output:
+
+Welcome To PythonBank! Please, Log In. Whats Your Username? Nate
+Nate, Please Enter Your Password. 1227
+Sorry, You May Have Entered Something Wrong. Please, Try Again.
+Welcome To PythonBank! Please, Log In. Whats Your Username? admin
+admin, Please Enter Your Password. 1234
+Successfully Logged In!
+Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose. Check balance
+1000
+Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose. deposit money
+How Much Money Would You Like To Deposit? 500
+Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose. check balance
+1500
+Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose. withdraw money
+How Much Money Would You Like To Withdraw? 200
+Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose. check balance
+1300
+Bank Menu / Options: 1. Check Balance, 2. Deposit Money, 3. Withdraw Money, 4. Exit, Type An Option You Want To Choose. exit
+Goodbye!
